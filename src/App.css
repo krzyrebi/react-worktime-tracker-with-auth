@@ -1,38 +1,96 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+html {
+  font-family: 'Nunito', sans-serif;
+  font-size: 20px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+body {
+  height: 100%;
+  width: 100%;
+  background-color: #0B0C10;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.form-wrapper {
+  width: 340px;
+  min-height: 400px;
+  margin: 0 auto;
+  margin-top: 50px;
+  background-color: #1F2833;
+  padding: 10px;
+  border-radius: 8px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.form-wrapper h2 {
+  text-align: center;
+}
+
+.form-wrapper p {
+  margin-top: 30px;
+  margin-bottom: 15px;
+}
+
+.form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.form input {
+  margin-top: 2px;
+  font-size: 20px;
+  font-family: 'Nunito', sans-serif;
+  padding: 0.4rem;
+}
+
+.form label {
+  margin-top: 20px;
+}
+
+.form button {
+  margin-top: 12px;
+  padding: 10px;
+  color: black;
+  background-color: #C5C6C7;
+  font-family: 'Nunito';
+  font-weight: bold;
+  font-size: 20px;
+  border: 0;
+}
+
+.form button:hover {
+  color: #1F2833;
+  cursor: pointer;
+  background-color: #45A29E;
+}
+
+.form button:disabled {
+  color: #1F2833;
+  cursor: pointer;
+  background-color: #45A29E;
+}
+
+
+.display-none {
+  display: none;
+}
+
+.display-font-awesome {
+  margin-left: 10px;
+}
+
+.error-message {
+  background-color: lightpink;
+  color: firebrick;
+  font-weight: bold;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
 }
