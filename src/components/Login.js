@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from '../api/axios';
 import { useNavigate } from 'react-router-dom';
-import useAuth from '../hooks/useAuth'
+import useAuth from '../hooks/useAuth';
+import { Link } from 'react-router-dom';
 
 const Login = () => {
     const [email, setEmail] = useState('');
@@ -10,7 +11,7 @@ const Login = () => {
     const navigate = useNavigate();
     const { setAuth } = useAuth();
 
-    const LOGIN_URL = '/login'
+    const LOGIN_URL = '/login';
 
     useEffect(() => {
         setErrorMessage('');
@@ -27,7 +28,7 @@ const Login = () => {
                 })
             console.log(response);
             setAuth({ accessToken: response.data.accessToken, user: response.data.user });
-            navigate('/dashboard');
+            navigate('/');
         } catch (err) {
             if (!err?.response) {
                 setErrorMessage('No Server Response');
@@ -43,6 +44,7 @@ const Login = () => {
 
     return (
         <div className='form-wrapper'>
+            <h3> Worktime Tracker Deluxe</h3>
             <p className={errorMessage ? 'error-message' : 'display-none'}>{errorMessage}</p>
             <h2>Log in</h2>
             <form onSubmit={handleSubmit} className='form'>
@@ -69,8 +71,7 @@ const Login = () => {
                 />
                 <button>Log in</button>
             </form>
-            <p>Don't have an account? Sign up</p>
-            <p>Forgot password? Reset password</p>
+            <p>Don't have an account? <Link to='/signup'>Sign up</Link></p>
 
         </div>
     )

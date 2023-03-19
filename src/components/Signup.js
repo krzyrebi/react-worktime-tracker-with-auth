@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { faCheck, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import axios from '../api/axios';
+import { Link } from 'react-router-dom';
 
 const Signup = () => {
     const [email, setEmail] = useState('');
@@ -17,6 +18,7 @@ const Signup = () => {
     const userRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
     const REGISTER_URL = '/register'
+    const POSTS_URL = '/posts'
 
     useEffect(() => {
         setValidEmail(userRegex.test(email));
@@ -44,6 +46,11 @@ const Signup = () => {
                 'password': password
             })
             console.log(response)
+            const response2 = await axios.post(POSTS_URL, {
+                'id': response.data.user.id,
+                'totalTimeWorked': null
+            })
+            console.log(response2)
         } catch (err) {
             if (!err?.response) {
                 setErrorMessage('No server response')
@@ -59,6 +66,7 @@ const Signup = () => {
 
     return (
         <div className='form-wrapper'>
+            <h3> Worktime Tracker Deluxe</h3>
             <p className={errorMessage ? 'error-message' : 'display-none'}>{errorMessage}</p>
             <h2>Sign up</h2>
             <form onSubmit={handleSubmit} className='form'>
@@ -101,7 +109,7 @@ const Signup = () => {
                 />
                 <button disabled={!validEmail || !validPwd || !validPwdMatch ? true : false}>Sign Up</button>
             </form>
-            <p>Already have an account? Log in</p>
+            <p>Already have an account? <Link to='/login'>Log in</Link> </p>
 
         </div>
     )
